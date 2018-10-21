@@ -41,17 +41,21 @@ def parseLines(line):
             line = line.replace("[wait time=\"", "")
             line = line.replace("\" input=\"1\"]", "")
             line = float(line)/1000.0
+            time = str(line)
             line = "    $ renpy.pause(" + str(line) + ")\n"
             newFile.write(line)
-            return "Wait for X milliseconds"
+            returnMessage = "Wait for " + time + " milliseconds"
+            return returnMessage
         if "[wait time=\"" and "input=1" in line:
             #parse wait command
             line = line.replace("[wait time=\"", "")
             line = line.replace("\" input=1]", "")
             line = float(line)/1000.0
+            time = str(line)
             line = "    $ renpy.pause(" + str(line) + ")\n"
             newFile.write(line)
-            return "Wait for X milliseconds"
+            returnMessage = "Wait for " + time + " milliseconds"
+            return returnMessage
         if "[wait time=\"" in line:
             #parse wait command
             line = line.replace("[wait time=\"", "")
